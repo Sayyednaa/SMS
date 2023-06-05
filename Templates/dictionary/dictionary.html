@@ -1,0 +1,44 @@
+<!-- in dictionary/templates/dictionary/dictionary.html -->
+{% extends 'base.html' %}
+{% block title %}Dictionary{% endblock title %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dictionary Search</title>
+  </head>
+  <body>
+<div class="margin-top">
+
+      <p>Type a word to search:</p>
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" id="search-input" name="word">
+        <button onclick="search()" type="submit">Search</button>
+        <div id="search-results">{{aires}}</div>
+      </form>
+      <script>
+        function search() {
+          const searchInput = document.getElementById('search-input').value;
+          const searchResults = document.getElementById('search-results');
+          const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchInput}`;
+          fetch(url)
+            .then(response => response.json())
+            .then(data => {
+              if (Array.isArray(data)) {
+                const definition = data[0].meanings[0].definitions[0].definition;
+                searchResults.innerHTML = `<p><strong>${searchInput}:</strong> ${definition}</p>`;
+              } else {
+                searchResults.innerHTML = `<p>No definition found for "${searchInput}".</p>`;
+              }
+            })
+            .catch(error => {
+              console.error(error);
+              searchResults.innerHTML = `<p>There was an error searching for "${searchInput}". Please try again later.</p>`;
+            });
+        }
+      </script>
+    </div>
+  </body>
+</html>
+{% endblock content %}

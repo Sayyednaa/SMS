@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+ 
+  </head>
+
+  <style>
+    table, th, td {
+      margin-top: 50px;
+    border: 1px solid;
+  }
+  </style>
+  <body>
+  <nav class="navbar navbar-expand-lg bg-info-subtle">
+  <div class="container-fluid">
+    <a class="navbar-brand  text-black fw-bold font-monospace" href="/">Study Portal</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         
+        <li class="nav-item">
+          <a class="nav-link text-black fw-bold" href="/todo">Todo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-black fw-bold" href="/notes">Notes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  text-black fw-bold " href="/books">Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  text-black fw-bold" href="/dictionary">Dictionary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  text-black fw-bold" href="/chatbot">Chatbot</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  text-black fw-bold " href="/todo/syallbuss">Syallbuss</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  text-black fw-bold " href="/logout">Logout</a>
+        </li>
+         
+      
+      </ul>
+     
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container mt-auto">
+    <table>
+        <tr>
+          
+          
+          <td>
+              
+
+          <div class="graph">
+            <div class="card">
+                <div id="stat" style="width: 250px; height: 250px;">
+                    <div style="position: relative;">
+                        <div dir="ltr" style="position: relative; width: 250px; height: 250px;">
+                            <div aria-label="A chart." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
+                                <svg width="250" height="250" aria-label="A chart." style="overflow: hidden;">
+                                    <!-- SVG content goes here -->
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+          </td>
+          <td>
+              
+
+          <div class="graph">
+            <div class="card">
+                <div id="stat2" style="width: 250px; height: 250px;">
+                    <div style="position: relative;">
+                        <div dir="ltr" style="position: relative; width: 250px; height: 250px;">
+                            <div aria-label="A chart." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
+                                <svg width="250" height="250" aria-label="A chart." style="overflow: hidden;">
+                                    <!-- SVG content goes here -->
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+          </td>
+          <td>
+              
+
+          <h3>Today's Goals</h3>
+          
+          <ul>{% for i in task %}
+
+            <li >{{i.title}}</li>{% endfor %}
+          </ul>
+          
+            
+          </td>
+
+
+        </tr>
+        <tr>
+      
+          <th>Lecutre's</th>
+          <th>Todo's</th>
+          <th>Syallbuss</th>
+        </tr>
+       
+        </td>
+          <td>
+           
+          {% for i in lecs %}
+          <h2>{{ i.Subject}} :<br> {{ i.Chapter }}</h2>
+        {% endfor %}
+        </td>
+          <td>
+            <h4>Total Tasks : {{totalTask}}</h4>
+            <h4>Completed: {{completedTask}}</h4>
+            <h4>Remaining : {{pendingTask}}</h4>  
+            <div class="overlay">
+              <a class="acard">
+            <div id="piechart" style="width: 250px; height: 250px;"></div></a></div>
+        </td>
+          <td>
+            <h4>Total Chapters : {{Tc}}</h4>
+            <h4>Completed: {{CompletedC}}</h4>
+            <h4>Remaining : {{Rc}}</h4>  
+        <div class="overlay">
+          <a class="acard" href="/todo/syallbuss">
+            <div id="syalc" style="width: 250px; height: 250px;"></div>
+  
+        </td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Total tasks completed', 'Hours per Day'],
+      ['Completed',     {{completedTask}}],
+      ['Pendinf',      {{pendingTask}}],
+      
+     
+    ]);
+
+    var options = {
+      title: 'Total Tasks: {{totalTask}}'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('stat'));
+
+    chart.draw(data, options);
+  }
+</script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Total tasks completed', 'Hours per Day'],
+      ['Completed',     {{CompletedC}}],
+      ['Pendinf',      {{Rc}}],
+      
+     
+    ]);
+
+    var options = {
+      title: 'Total Chapters: {{Tc}}'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('stat2'));
+
+    chart.draw(data, options);
+  }
+</script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Total tasks completed', 'Hours per Day'],
+      ['Completed',     {{CompletedC}}],
+      ['Pendinf',      {{Rc}}],
+      
+     
+    ]);
+
+    var options = {
+      title: 'Total Chapters: {{Tc}}'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('stat3'));
+
+    chart.draw(data, options);
+  }
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!-- in unit_converter/templates/unit_converter/convert.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Unit Converter{% endblock %}
+
+{% block content %}
+<div class="margin-top">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="from_unit">From:</label>
+      <select name="from_unit">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kilometers">Kilometers</option>
+        <option value="miles">Miles</option>
+        <option value="centimeter">Centimeter</option>
+        <option value="minute">Minute</option>
+        <option value="meter">Meters</option>
+        <option value="second">Second</option>
+        <option value="hour">Hour</option>
+      </select>
+      <label for="to_unit">To:</label>
+      <select name="to_unit">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kilometers">Kilometers</option>
+        <option value="miles">Miles</option>
+        <option value="meter">Meters</option>
+        <option value="second">Second</option>
+        <option value="hour">Hour</option>
+        <option value="centimeter">Centimeter</option>
+        <option value="minute">Minute</option>
+      </select>
+      <label for="value">Value:</label>
+      <input type="number" name="value" required>
+      <button type="submit">Convert</button>
+      
+        </form>
+        {% if result is not None %}
+          <div>
+           <Strong> {{ value }} {{ from_unit }} =  {{ result }} {{ to_unit }}</strong>
+          </div>
+        {% endif %}
+      {% endblock %}
+      
+</div>

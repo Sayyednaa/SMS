@@ -1,0 +1,396 @@
+/* Base styles */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+ 
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .card {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 20px rgba(232, 17, 17, 0.3);
+  }
+  
+  .card:hover .overlay {
+    opacity: 1;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .card:nth-child(1) {
+    background: linear-gradient(to bottom right, #d6ddde, #dedfdf);
+  }
+  
+  .card:nth-child(2) {
+    background: linear-gradient(to bottom right, #f12711, #f5af19);
+  }
+  
+  .card:nth-child(3) {
+    background: linear-gradient(to bottom right, #779536, #f7b733);
+  }
+  
+  .card:nth-child(4) {
+    background: linear-gradient(to bottom right, #1d976c, #93f9b9);
+  }
+  
+  .card:nth-child(5) {
+    background: linear-gradient(to bottom right, #7f7fd5, #86a8e7, #91eae4);
+  }
+  .card{
+    background: linear-gradient(to bottom right, #7f7fd5, #86a8e7, #91eae4);
+  }
+  
+  
+  
+    /* Cards */
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .card {
+      width: 80%;
+      height: auto;
+      margin: 20px 0;
+    }
+  
+.acard{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
+  
+.bold{
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+.bold th{
+  color: black;
+}
+/* Style the main content */
+main {
+    margin: 20px;
+  }
+  
+  .margin-top {
+    margin-top: 20px;
+  }
+  
+
+  
+  button[type="submit"] {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: white;
+    color: #333;
+  }  
+
+.contform{
+  border: 2px solid black;
+}
+
+table, th, td {
+  border:1px solid black;
+  text-align: center;
+}
+
+.hidden{
+  visibility: hidden;
+}
+   /* Set font family and size for the entire table */
+   table {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Set style for the table headers */
+th {
+    background-color: #ddd;
+    font-weight: bold;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Set style for the table cells */
+td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Set style for the checkbox */
+input[type=checkbox] {
+    margin-right: 8px;
+}
+
+/* Set style for the action buttons */
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+/* Set style for the update button */
+button.update {
+    background-color: #2196F3;
+
+}
+
+/* Set style for the delete button */
+button.delete {
+    background-color: #f44336;
+    border-radius: 25px;
+}
+
+/* Set style for the hover effect on buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+.btnup{
+  border-radius: 25px;
+}
+
+.btnup:hover{
+  background: radial-gradient(green,cyan);
+}
+.btndel:hover{
+  background: radial-gradient(rgb(205, 111, 11),red);
+}
+.btndel{
+  background: red;
+    border-radius: 25px;
+}
+
+.contform {
+  max-width: 500px;
+  margin: 10% auto;
+  align-items: center;
+  border-radius: 10px;
+  border: none;
+
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #155eb1;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'Alkatra','Times New Roman', Times, serif;
+}
+
+input[type="date"]{
+  background: transparent;
+  color: #0a0a0aba;
+}
+
+.btnsub {
+  display: inline-block;
+  align-items: center;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btnsub:hover {
+  background-color: #0069d9;
+}
+form {
+  text-align: center;
+}
+
+
+select,
+input[type="number"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+ /* Example CSS code */
+ body {
+  background-color: #F0F0F0;
+}
+
+
+.margin-top {
+  margin-top: 20px;
+}
+
+.list-group {
+  margin-bottom: 20px;
+}
+
+.list-group-item {
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  padding: 10px;
+}
+
+.list-group-item h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #FFFFFF;
+  background: radial-gradient(#0de7f6, #11d81a8c);
+  border-radius: 8px;
+  margin: 5px;
+}
+
+
+
+.divupl{
+  display: flex; justify-content: center; align-items: center; height: 100;
+  
+}
+.btnupl{
+  background: radial-gradient(green,rgb(37, 220, 174));
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 177%;
+  font-family: monospace;
+}
+ .btnupl:hover{
+  background: radial-gradient(rgb(27, 113, 150),rgb(68, 233, 191));
+ }
+
+ 
+.white{
+  color: white;
+}
+ 
+
+h1 {
+  font-size: 36px;
+  text-align: center;
+  color: #dd1393;
+  margin-bottom: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-decoration: underline;
+}
+
+p {
+  font-size: 18px;
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #e14b4b;
+  margin-bottom: 40px;
+}
+
+iframe {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: 500px;
+  border: none;
+}
+ 
+strong{
+  display: flex; justify-content: center; align-items: center; height: 100;
+  color: black;
+    margin-top: 50px;
+    font-size: 160%;
+}
+
+.quran{
+  text-decoration: underline;
+}

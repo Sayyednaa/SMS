@@ -1,0 +1,15 @@
+<!-- in books/templates/books/book_upload.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Upload a Book{% endblock %}
+
+{% block content %}
+<div class="margin-top">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+  </form>
+</div>
+{% endblock %}

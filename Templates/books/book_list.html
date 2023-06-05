@@ -1,0 +1,35 @@
+<!-- in books/templates/books/book_list.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Book List{% endblock %}
+
+{% block content %}
+<div class="divupl">
+  <a href="{% url 'book_upload' %}"><button class="btnupl">Upload a new book</button></a>
+  </div>
+  <div class="container margin-top">
+
+    {% for book in books %}
+
+
+      <div class="card">
+        <img src="/{{book.cover_image}}" alt="Todo"> 
+        
+        <div class="overlay">
+          <h2 class="white">{{book.title}}</h2>
+         
+          <a href="{% url 'book_detail' book.pk %}" class="acard"><button class="btnup">View</button></a>
+          <a href="delete/{{book.pk}}"><button class="btndel" > Delete</button></a></li>
+        </div>
+        
+      </div>
+ 
+      
+       
+        
+    {% endfor %}
+
+  </div>
+  
+{% endblock %}

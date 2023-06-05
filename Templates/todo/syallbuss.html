@@ -1,0 +1,211 @@
+<!-- in todo/templates/todo/task_list.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+
+<div class="margin-top">
+  <body>
+    <style>
+      .stats {
+          display: flex; /* Add this line to create a flex container */
+      }
+      .stats h4,
+      .stats h6 {
+          margin: 0;
+      }
+      .card {
+          border: 1px solid black;
+           padding: 10px;
+          margin: 10px; 
+          position: absolute;
+      }
+  </style>
+   
+
+
+    <table style="width:100%">
+        <h2>Biology</h2>
+      <tr>
+        <th>Sr. </th>
+        <th>Chapter's Name</th>
+        <th>Status </th>
+       
+      </tr>
+      {% for i in bio %}
+      <tr>
+            <td>{{ forloop.counter }}</td>
+          <td>{{i.Cname}}</td>
+          <td>{% if i.completed == True %}<input type="checkbox" checked> {% else %}<input type="checkbox" > {% endif %}</td>
+     
+      </tr>
+      {% endfor %}
+    </table>
+    <table style="width:100%">
+        <h2>Chemistry</h2>
+      <tr> <th>Sr. </th>
+
+        <th>Chapter's Name</th>
+        <th>Status </th>
+       
+      </tr>
+      {% for i in chem %}
+      <tr>
+         <td>{{ forloop.counter }}</td>
+          <td>{{i.Cname}}</td>
+          <td>{% if i.completed == True %}<input type="checkbox" checked> {% else %}<input type="checkbox" > {% endif %}</td>
+     
+      </tr>
+      {% endfor %}
+    </table>
+          
+    <table style="width:100%">
+        <h2>Physics</h2>
+      <tr> <th>Sr. </th>
+        <th>Chapter's Name</th>
+        <th>Status </th>
+       
+      </tr>
+      {% for i in phy %}
+      <tr>
+         <td>{{ forloop.counter }}</td>
+          <td>{{i.Cname}}</td>
+          <td>{% if i.completed == True %}<input type="checkbox" checked> {% else %}<input type="checkbox" > {% endif %}</td>
+     
+      </tr>
+      {% endfor %}
+    </table>
+          
+    <table style="width:100%">
+        <h2>English</h2>      <tr> <th>Sr. </th>
+        <th>Chapter's Name</th>
+        <th>Status </th>
+       
+      </tr>
+      {% for i in eng %}
+      <tr> <td>{{ forloop.counter }}</td>
+        
+          <td>{{i.Cname}}</td>
+          <td>{% if i.completed == True %}<input type="checkbox" checked> {% else %}<input type="checkbox" > {% endif %}</td>
+     
+      </tr>
+      {% endfor %}
+    </table>
+          
+          
+    <table style="width:100%">
+        <h2>Hindi</h2>
+      <tr> <th>Sr. </th>
+        
+        <th>Chapter's Name: </th>
+        <th>Status </th>
+       
+      </tr>
+      {% for i in hin %}
+      <tr>
+         <td>{{ forloop.counter }}</td>
+          <td>{{i.Cname}}</td>
+          <td>{% if i.completed == True %}<input type="checkbox" checked> {% else %}<input type="checkbox" > {% endif %}</td>
+     
+      </tr>
+      {% endfor %}
+    </table>
+          
+    <div class="stats">
+
+
+      <div class="graph">
+        <div class="card">
+            <div id="stat" style="width: 250px; height: 250px;">
+                <div style="position: relative;">
+                    <div dir="ltr" style="position: relative; width: 250px; height: 250px;">
+                        <div aria-label="A chart." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
+                            <svg width="250" height="250" aria-label="A chart." style="overflow: hidden;">
+                                <!-- SVG content goes here -->
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div id="stat2" style="width: 250px; height: 250px;">
+                <div style="position: relative;">
+                    <div dir="ltr" style="position: relative; width: 250px; height: 250px;">
+                        <div aria-label="A chart." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
+                            <svg width="250" height="250" aria-label="A chart." style="overflow: hidden;">
+                                <!-- SVG content goes here -->
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+<!--       
+
+      <div class="graph">
+        <div class="card">
+        <div id="stat" style="width: 250px; height: 250px;"></div></div>
+        <div class="card">
+        <div id="stat2" style="width: 250px; height: 250px;"></div></div>
+      </div> -->
+  </div>
+  
+
+    
+</div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Bio',     {{bt}}],
+      ['Phys',      {{pt}}],
+      ['Chem',      {{ct}}],
+      ['Eng',      {{et}}],
+      ['Hin',      {{ht}}],
+     
+    ]);
+
+    var options = {
+      title: 'Total Chapters: {{tc}}'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('stat'));
+
+    chart.draw(data, options);
+  }
+</script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Bio',     {{btc}}],
+      ['Phys',      {{ptc}}],
+      ['Chem',      {{ctc}}],
+      ['Eng',      {{etc}}],
+      ['Hin',      {{htc}}],
+     
+    ]);
+
+    var options = {
+      title: 'Subjects Completed:  '
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('stat2'));
+
+    chart.draw(data, options);
+  }
+</script>
+{% endblock %}

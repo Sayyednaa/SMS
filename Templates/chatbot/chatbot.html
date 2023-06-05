@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Chatbot{% endblock title %}
+{% block content %}
+<html>
+<head>
+    <title>Chatbot</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+    <div id="chat-container margin-top">
+        <div id="chat-log" ></div>
+        <form id="chat-form" method="post" action="" >
+            {% csrf_token %}
+            <input type="text" id="user-input" name="user">
+            <button type="submit">Send</button>
+        </form>
+        <div class="response"><p>{{response}}</p>
+        </div>
+    </div>
+   
+</body>
+</html>
+{% endblock content %}
