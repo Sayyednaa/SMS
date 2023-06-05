@@ -8,7 +8,7 @@ def get_bot_response(user_input):
 import openai
 import os
 
-openai.api_key = "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"
+openai.api_key = "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"
 def generate_response(user_input):
     prompt = f"{user_input}"
     response = openai.Completion.create(
